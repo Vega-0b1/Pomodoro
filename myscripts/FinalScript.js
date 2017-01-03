@@ -1,5 +1,5 @@
 window.onload = function(){
-  var christmasDay = new Date("March 16, 2017 00:00:00");
+  var christmasDay = new Date("October 19, 2017 00:00:00");
   startTimer("clock", christmasDay);
 };
 
