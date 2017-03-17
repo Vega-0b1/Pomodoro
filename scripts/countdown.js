@@ -1,6 +1,9 @@
-window.onload = function(){
-  var set_your_time = new Date("March 26, 2017 00:00:00");
-  startTimer("clock", set_your_time);
+//Countdown Code Starts
+
+window.onload = function() {          //when window loads runs function without name.
+  var set_your_time = new Date();     //have to figure out how to bring input here set to zero for now.
+  startTimer("clock", set_your_time); //on load start timer should probably change or not.
+  checkEdits();                       //on load check for local storage for previous edits.
 };
 
 function startTimer(id, set_your_time){
@@ -48,3 +51,22 @@ function animateClock(span){
     span.className = "";
   },700);
 }
+
+//Countdown Code Ends
+
+//Save Name Changes Code Starts
+
+function saveEdits() {                                //Made my saveEdits function.
+  var edit_Name = document.getElementById("edit");    //Then grabbed element with id "edit" in Html and set to var.
+  var new_Name = edit_Name.innerHTML;                 //Grabbed new changes to element and assigned to new var.
+  localStorage.userEdits = new_Name;                  //Saved new name to user storage.
+
+}
+
+function checkEdits() {                                                 //Made CheckEdits function.
+  if(localStorage.userEdits!=null)                                      //Set check for local storage if empty or not.
+  document.getElementById("edit").innerHTML = localStorage.userEdits;   //if not empty then inject local storage save to element with id "edit".
+
+}
+
+//Save Name Changes Code Ends
