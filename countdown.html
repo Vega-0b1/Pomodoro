@@ -10,6 +10,7 @@
 		<script src = "scripts/countdown.js"></script>
 
 	</head>
+
 	<body>
 
 		<div class = "wrapper">
@@ -18,10 +19,10 @@
 
 				<h1>Pomodoro Starting Point</h1>
 
-				<ul class = "menu">
-					<li><a href = index.html>Home</a></li>
-					<li><a href = countdown.html>Pomodoro</a></li>
-				</ul>
+					<ul class = "menu">
+						<li><a href = index.html>Home</a></li>
+						<li><a href = countdown.html>Pomodoro</a></li>
+					</ul>
 
 			</header>
 
@@ -29,29 +30,28 @@
 
 				<div id = "countdown">
 
-					<h1 class = "big" contenteditable = true>Name</h1><hr>
+					<div id = "edit">
+
+						<h1 class = "big" contenteditable = true>Name</h1><hr>
+						<input type = "button" value = "Save Name" onclick = "saveEdits()"/>
+
+					</div>
 
 					<div id = "clock"></div>
 
 					<div id = "units">
+
 						<span>Days</span>
 						<span>Hours</span>
 						<span>Minutes</span>
 						<span>Seconds</span>
+
 					</div>
 
-
 				</div>
+
 			</section>
-
 			<footer>
-
 			</footer>
-
-		</div>
-
-
-
-	</body>
 
 </html>
