@@ -13,15 +13,15 @@
 
 	<body>
 
-		<div class = "wrapper">
+		<div class = "wrapper">	<!-- start of wrapper-->
 
 			<header class = "title-margin">
 
 				<h1>Pomodoro Starting Point</h1>
 
 					<ul class = "menu">
-						<li><a href = index.html>Home</a></li>
-						<li><a href = countdown.html>Pomodoro</a></li>
+						<li><a href = index.html>Home</a></li>					<!--button link to home-->
+						<li><a href = countdown.html>Pomodoro</a></li>	<!--button link to PomPom page-->
 					</ul>
 
 			</header>
@@ -30,28 +30,32 @@
 
 				<div id = "countdown">
 
-					<div id = "edit">
-
-						<h1 class = "big" contenteditable = true>Name</h1><hr>
+					<div id = "edit">	<!-- made id for js save functions to find editable text -->
+						<h1 class = "big" contenteditable = true>Name</h1><hr>	<!--big class is just css styling-->
 						<input type = "button" value = "Save Name" onclick = "saveEdits()"/>
-
 					</div>
 
-					<div id = "clock"></div>
+					<div id = "clock"> <!-- Clock numbers gets injected here--> </div>
 
-					<div id = "units">
-
-						<span>Days</span>
-						<span>Hours</span>
-						<span>Minutes</span>
-						<span>Seconds</span>
-
+					<div id = "units">			<!-- Id was mader for css styling styling will be applied to span tags below-->
+						<span>Days</span>			<!--This does nothing only puts letters under timer.-->
+						<span>Hours</span>		<!--This does nothing only puts letters under timer.-->
+						<span>Minutes</span>	<!--This does nothing only puts letters under timer.-->
+						<span>Seconds</span>	<!--This does nothing only puts letters under timer.-->
 					</div>
 
 				</div>
 
 			</section>
+
 			<footer>
+								<!-- empty footer can add about,contact us, or support information here.-->
 			</footer>
+
+		</div> <!-- End of wrapper-->
+
+
+
+	</body>
 
 </html>
