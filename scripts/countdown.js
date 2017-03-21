@@ -9,7 +9,7 @@ window.onload = function() {          //when window loads runs function without 
 function startTimer(passed_id, set_your_time) {
   var timerInterval = setInterval(function(){      //created interval that keeps running every 1000 milisecond
     var clock = document.getElementById(passed_id);
-    var timer = updateTimer(set_your_time); 
+    var timer = updateTimer(set_your_time);
 
     clock.innerHTML = '<span>' + timer.days + '</span>'     //span[0]
                     + '<span>' + timer.hours + '</span>'    //span[1]
@@ -71,3 +71,30 @@ function checkEdits() {                                                 //Made C
 }
 
 //Save Name Changes Code Ends
+
+//noob suggestions for additions to timer code
+
+/* something like:
+
+ document.getElementById("pauseBtn").onclick = function(){pauseTimer}
+
+function pauseTimer(){
+ ~some code to pause the timer~
+}
+*/
+
+/* another something like:
+
+ document.getElementById("playBtn").onclick = function(){resumeTimer}
+
+function resumeTimer(){
+ ~some code to pause the timer~
+}
+*/
+
+/*
+maybe:
+
+document.getElementById("resetbutton").onclick = function(){~maybe call your starttimer in here ?}
+
+*/
