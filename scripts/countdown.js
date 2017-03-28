@@ -1,17 +1,19 @@
 //Countdown Code Starts
 
 window.onload = function() {          //when window loads runs function without name.
-//  var set_your_time = new Date("May 7,2017 00:00:00");     // Actually gonna remove this line and starttimer line below and will start timer instead when button is clicked
-//  startTimer("clock", set_your_time); //clock id that's being passed and date inputed about in miliseconds.
+  var set_your_time = null;     // Actually gonna remove this line and starttimer line below and will start timer instead when button is clicked
+  startTimer("clock", set_your_time); //clock id that's being passed and date inputed about in miliseconds.
   checkEdits();                       //on load check for local storage for previous edits.
 };
 
 function start() {
   set_your_time = new Date("May 7,2017 00:00:0");
-  startTimer("clock",set_your_time)
+  startTimer("clock",set_your_time);
+}
 
-
-
+function reset() {
+  var set_your_time = null;
+  startTimer("clock", set_your_time);
 }
 
 function startTimer(passed_id, set_your_time) {
