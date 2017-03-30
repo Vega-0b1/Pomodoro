@@ -7,17 +7,41 @@ window.onload = function() {          //when window loads runs function without 
 };
 
 function start() {
-  set_your_time = new Date("May 7,2017 00:00:0");
-  startTimer("clock",set_your_time);
-}
+  document.getElementById("start").disabled = true;
+  /*var days = document.getElementById("days").value;
+  days = parseFloat(days);
+  //if(days === 1) document.writeln("non strict");
+  days = days*86400000;
 
-function reset() {
-  var set_your_time = null;
+  var hours = document.getElementById("hours").value;
+  hours = parseFloat(hours);
+  hours = hours*3600000;
+  //document.writeln(hours);                                // Work in Progress.
+  var minutes = document.getElementById("minutes").value;
+  minutes = parseFloat(minutes);
+  minutes = minutes*60000;
+  //document.writeln(minutes);
+  var seconds = document.getElementById("seconds").value;
+  seconds = parseFloat(seconds);
+  seconds = seconds*1000;
+  //document.writeln(seconds);
+  var set_your_time = (days+hours+minutes+seconds);*/
+
+  var set_your_time = new Date("May 7, 2017 00:00:00")
+  //document.writeln(set_your_time);
   startTimer("clock", set_your_time);
 }
 
+function reset() {
+  document.getElementById("start").disabled = false;
+  clearInterval(timerInterval);
+  clock.innerHTML = '<span>0</span><span>0</span><span>0</span><span>0</span>';
+}
+
+var timerInterval;
+
 function startTimer(passed_id, set_your_time) {
-  var timerInterval = setInterval(function(){      //created interval that keeps running every 1000 milisecond
+    timerInterval = setInterval(function(){      //created interval that keeps running every 1000 milisecond
     var clock = document.getElementById(passed_id);
     var timer = updateTimer(set_your_time);
 

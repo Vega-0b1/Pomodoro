@@ -42,12 +42,13 @@
 						<span>Hours</span>		<!--This does nothing only puts letters under timer.-->
 						<span>Minutes</span>	<!--This does nothing only puts letters under timer.-->
 						<span>Seconds</span>	<!--This does nothing only puts letters under timer.-->
-						<input type = "number" value = "Days"/>
-						<input type = "number" value = "Hours"/>
-						<input type = "number" value = "Minutes"/>
-						<input type = "number" value = "Seconds"/>
-						<input type = "button" value = "Set" onclick ="set()"/>
-						<input type = "button" value = "Start" onclick ="start()"/>
+						<div class = "time">
+							<input id = "days" type = "text" value = "Days"/>
+							<input id = "hours" type = "text" value = "Hours"/>
+							<input id = "minutes" type = "text" value = "Minutes"/>
+							<input id = "seconds" type = "text" value = "Seconds"/>
+						</div>
+						<input id = "start" type = "button" value = "Start" onclick ="start()"/>
 						<input type = "button" value = "Reset" onclick ="reset()"/>
 					</div>
 
