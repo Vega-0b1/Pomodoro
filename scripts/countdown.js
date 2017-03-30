@@ -1,41 +1,62 @@
 //Countdown Code Starts
 
 window.onload = function() {          //when window loads runs function without name.
-  var set_your_time = null;     // Actually gonna remove this line and starttimer line below and will start timer instead when button is clicked
-  startTimer("clock", set_your_time); //clock id that's being passed and date inputed about in miliseconds.
   checkEdits();                       //on load check for local storage for previous edits.
 };
 
 function start() {
+  clearInterval(timerInterval);
   document.getElementById("start").disabled = true;
-  /*var days = document.getElementById("days").value;
-  days = parseFloat(days);
-  //if(days === 1) document.writeln("non strict");
+  document.getElementById("pause").disabled = false;
+  var days = document.getElementById("days").value;
+  days = parseInt(days);
   days = days*86400000;
 
   var hours = document.getElementById("hours").value;
-  hours = parseFloat(hours);
+  hours = parseInt(hours);
   hours = hours*3600000;
-  //document.writeln(hours);                                // Work in Progress.
-  var minutes = document.getElementById("minutes").value;
-  minutes = parseFloat(minutes);
-  minutes = minutes*60000;
-  //document.writeln(minutes);
-  var seconds = document.getElementById("seconds").value;
-  seconds = parseFloat(seconds);
-  seconds = seconds*1000;
-  //document.writeln(seconds);
-  var set_your_time = (days+hours+minutes+seconds);*/
 
-  var set_your_time = new Date("May 7, 2017 00:00:00")
-  //document.writeln(set_your_time);
-  startTimer("clock", set_your_time);
+  var minutes = document.getElementById("minutes").value;
+  minutes = parseInt(minutes);
+  minutes = minutes*60000;
+
+  var seconds = document.getElementById("seconds").value;
+  seconds = parseInt(seconds);
+  seconds = seconds*1000;
+
+  var total = (days+hours+minutes+seconds);
+  var parsedTotal = parseInt(total);
+  startTimer("clock", parsedTotal);
 }
 
-function reset() {
-  document.getElementById("start").disabled = false;
+function replay() {
   clearInterval(timerInterval);
-  clock.innerHTML = '<span>0</span><span>0</span><span>0</span><span>0</span>';
+  var days = document.getElementById("days").value;
+  days = parseInt(days);
+  days = days*86400000;
+
+  var hours = document.getElementById("hours").value;
+  hours = parseInt(hours);
+  hours = hours*3600000;
+
+  var minutes = document.getElementById("minutes").value;
+  minutes = parseInt(minutes);
+  minutes = minutes*60000;
+
+  var seconds = document.getElementById("seconds").value;
+  seconds = parseInt(seconds);
+  seconds = seconds*1000;
+
+  var total = (days+hours+minutes+seconds);
+  var parsedTotal = parseInt(total);
+  minusTime = 1000;
+  startTimer("clock", parsedTotal);
+}
+
+function pause() {
+  document.getElementById("start").disabled = false;
+  document.getElementById("pause").disabled = true;
+  clearInterval(timerInterval);
 }
 
 var timerInterval;
@@ -66,10 +87,11 @@ function startTimer(passed_id, set_your_time) {
   }, 1000);   //end of interval but keeps going every 1000 miliseconds
 }    //out of interval no more code to run.
 
+var minusTime = 1000;
 
 function updateTimer(set_your_time){
-  var time = set_your_time - new Date();  //provided time minus current time equals time left.
-
+  var time = set_your_time - minusTime//- new Date();  //provided time minus current time equals time left.
+  minusTime = minusTime + 1000;
   return {
     'days': Math.floor( time/(1000*60*60*24) ),     //checks how many days are in provide miliseconds
     'hours': Math.floor( (time/(1000*60*60)) % 24 ),//checks hours in provided miliseconds
