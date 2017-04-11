@@ -14,7 +14,7 @@ body {
   margin: 0 auto;
   background: #292929;
   border-radius: 8px;
-  
+
 }
 
 a {
@@ -28,7 +28,7 @@ p {
 }
 
 header {
-  
+
   border-radius: 8px 8px 0 0;
   background: #003566;
   position: relative;
@@ -86,7 +86,7 @@ header ul a {
   font-weight: 400;
   padding-top: 6px;
   height: 40px;
-  
+
 }
 
 section {
@@ -114,6 +114,11 @@ footer {
 }
 
 .menu li:hover{
-  background: black; 
-  border-radius: 7px; 
+  background: black;
+  border-radius: 7px;
+}
+
+strike {
+  color: grey;
+
 }
