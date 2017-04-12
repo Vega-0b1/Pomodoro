@@ -1,4 +1,6 @@
 window.onload = function() {          //when window loads runs function without name.
+  document.getElementById("resume").disabled = true;
+  document.getElementById("pause").disabled = true;
   //checkSavedTime();
   checkEdits();                      //on load check for local storage for previous edits.
 };
@@ -56,10 +58,10 @@ function animateClock(span){
 
 
 
-//Pause,Start,Replay,Set Code Starts********************************************************************************************************************************************************************************************************
+//Set,Resume,Pause, Code Starts********************************************************************************************************************************************************************************************************
 function set() {
   clearInterval(timerInterval);
-  document.getElementById("start").disabled = true;
+  document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = false;
   var days = document.getElementById("days").value;
   days = parseInt(days);
@@ -84,9 +86,9 @@ function set() {
   startTimer("clock",total);
 }
 
-function start() {
+function resume() {
 clearInterval(timerInterval);
-document.getElementById("start").disabled = true;
+document.getElementById("resume").disabled = true;
 document.getElementById("pause").disabled = false;
 
 var days = document.getElementById("days").value;
@@ -110,44 +112,16 @@ var total = (days+hours+minutes+seconds);
 startTimer("clock", total);
 }
 
-function replay() {
-  clearInterval(timerInterval);
-  document.getElementById("start").disabled = true;
-  document.getElementById("pause").disabled = false;
-
-  var days = document.getElementById("days").value;
-  days = parseInt(days);
-  days = days*86400000;
-
-  var hours = document.getElementById("hours").value;
-  hours = parseInt(hours);
-  hours = hours*3600000;
-
-  var minutes = document.getElementById("minutes").value;
-  minutes = parseInt(minutes);
-  minutes = minutes*60000;
-
-  var seconds = document.getElementById("seconds").value;
-  seconds = parseInt(seconds);
-  seconds = seconds*1000;
-
-  var total = (days+hours+minutes+seconds);
-
-  minusTime = 1000;
-
-  startTimer("clock", total);
-}
-
 function pause() {
-document.getElementById("start").disabled = false;
+document.getElementById("resume").disabled = false;
 document.getElementById("pause").disabled = true;
 clearInterval(timerInterval);
 }
-//Pause,Start,Replay,Set Code Ends**********************************************************************************************************************************************************************************************************
+//Set,Resume,Pause, Code Ends**********************************************************************************************************************************************************************************************************
 
 
 
-//Save Name/Timer Changes Code Starts*******************************************************************************************************************************************************************************************************
+//Save Name/Timer Code Starts*******************************************************************************************************************************************************************************************************
 function saveEdits() {                                //Made my saveEdits function.
   var edit_Name = document.getElementById("edit");    //Then grabbed element with id "edit" in Html and set to var.
   var new_Name = edit_Name.innerHTML;                 //Grabbed new changes to element and assigned to new var.
@@ -168,16 +142,18 @@ function checkEdits() {                                                 //Made C
 
 }
 
-function checkSavedTime(){ //Work In Progress
+/*function checkSavedTime(){ //Work In Progress
   if(localStorage.userTimeLeft!=null) {
     if(localStorage.userDateOfExit!=null) {
       var timeLeft = localStorage.userTimeLeft;
       var dateOfExit = localStorage.userDateOfExit;
-      //var timeElapsed = (dateOfExit - currentDate);
-      //var newTime = timeLeft - timeElapsed;
-      //startTimer("clock", newTime);
+      var dateOfReturn = new Date();
+      var timeElapsed = dateOfExit - dateOfReturn;
+      document.write(timeElapsed);
+      var newTime = timeLeft - timeElapsed;
+      startTimer("clock", newTime);
 
     }
   }
-}
-//Save Name/Timer Changes Code Ends******************************************************************************************************************************************************************************************************
+}*/
+//Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************
