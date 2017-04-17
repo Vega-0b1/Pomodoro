@@ -1,7 +1,7 @@
 window.onload = function() {          //when window loads runs function without name.
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = true;
-  //checkSavedTime();
+  checkSavedTime();
   checkEdits();                      //on load check for local storage for previous edits.
 };
 
@@ -81,6 +81,8 @@ function set() {
 
   var total = (days+hours+minutes+seconds);
 
+  saveTotal(total);
+
   minusTime = 1000;
 
   startTimer("clock",total);
@@ -132,8 +134,13 @@ function saveTime(timeLeft) {
  var savedTimeLeft = timeLeft;
  var savedDateOfExit = new Date();
 
+ localStorage.userMinusTime = minusTime;
  localStorage.userTimeLeft = savedTimeLeft;
  localStorage.userDateOfExit = savedDateOfExit;
+}
+
+function saveTotal(total) {
+  localStorage.userTotal = total;
 }
 
 function checkEdits() {                                                 //Made CheckEdits function.
@@ -142,18 +149,24 @@ function checkEdits() {                                                 //Made C
 
 }
 
-/*function checkSavedTime(){ //Work In Progress
+function checkSavedTime(){
   if(localStorage.userTimeLeft!=null) {
     if(localStorage.userDateOfExit!=null) {
+      document.getElementById("resume").disabled = true;
+      document.getElementById("pause").disabled = false;
       var timeLeft = localStorage.userTimeLeft;
-      var dateOfExit = localStorage.userDateOfExit;
+      var dateOfExit = new Date(localStorage.userDateOfExit);
+      dateOfExit = dateOfExit.getTime();
       var dateOfReturn = new Date();
-      var timeElapsed = dateOfExit - dateOfReturn;
-      document.write(timeElapsed);
+      dateOfReturn = dateOfReturn.getTime();
+      var timeElapsed = dateOfReturn - dateOfExit;
+      //var oldMinusTime = localStorage.userMinusTime;
+      //minusTime = oldMinusTime;
+      //document.writeln(minusTime)
       var newTime = timeLeft - timeElapsed;
       startTimer("clock", newTime);
 
     }
   }
-}*/
+}
 //Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************
