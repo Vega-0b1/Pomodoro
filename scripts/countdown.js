@@ -8,20 +8,20 @@ window.onload = function() {          //when window loads runs function without 
 //global variables//
 var timerInterval;
 var timeLeftOnExit;
-var minusTime = 1000;
-var pause;
+var globalTime;
 //***************//
 
 //Countdown Code Starts*********************************************************************************************************************************************************************************************************************
-function startTimer(passed_id, set_your_time) {
+function startTimer(passedId, passedTime) {
+  globalTime = passedTime;
   timerInterval = setInterval(function(){      //created interval that keeps running every 1000 milisecond
-    var clock = document.getElementById(passed_id);
-    var timer = updateTimer(set_your_time);
+    var clock = document.getElementById(passedId);
+    var timer = updateTimer();
 
-    clock.innerHTML = '<span>' + timer.days + '</span>'     //span[0]
-                    + '<span>' + timer.hours + '</span>'    //span[1]
-                    + '<span>' + timer.minutes + '</span>'  //span[2]
-                    + '<span>' + timer.seconds + '</span>'; //span[3]
+    clock.innerHTML = "<span>" + timer.days + "</span>"     //span[0]
+                    + "<span>" + timer.hours + "</span>"    //span[1]
+                    + "<span>" + timer.minutes + "</span>"  //span[2]
+                    + "<span>" + timer.seconds + "</span>"; //span[3]
 
     var spans = clock.getElementsByTagName("span");
     animateClock(spans[3]); //animates seconds every second
@@ -36,16 +36,16 @@ function startTimer(passed_id, set_your_time) {
   }, 1000);   //end of interval but keeps going every 1000 miliseconds
 }    //out of interval no more code to run.
 
-function updateTimer(set_your_time){
-  var time = set_your_time - minusTime  //provided time minus current time equals time left.
-  saveTime(time);
-  minusTime = minusTime + 1000;
+function updateTimer() {
+  var time = globalTime = globalTime - 1000;  //provided time minus current time equals time left.
+  saveTime();
+
   return {
-    'days': Math.floor( time/(1000*60*60*24) ),     //checks how many days are in provide miliseconds
-    'hours': Math.floor( (time/(1000*60*60)) % 24 ),//checks hours in provided miliseconds
-    'minutes': Math.floor( (time/1000/60) % 60 ),   //checks minutes in provided milliseconds
-    'seconds': Math.floor( (time/1000) % 60 ),      //checks seconds in provided milliseconds
-    'total' : time
+    "days": Math.floor( time/(1000*60*60*24) ),     //checks how many days are in provide miliseconds
+    "hours": Math.floor( (time/(1000*60*60)) % 24 ),//checks hours in provided miliseconds
+    "minutes": Math.floor( (time/1000/60) % 60 ),   //checks minutes in provided milliseconds
+    "seconds": Math.floor( (time/1000) % 60 ),      //checks seconds in provided milliseconds
+    "total" : time
   };
 }
 
@@ -64,7 +64,7 @@ function set() {
   clearInterval(timerInterval);
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = false;
-  pause = false;
+
   var days = document.getElementById("days").value;
   days = parseInt(days);
   days = days*86400000;
@@ -81,46 +81,23 @@ function set() {
   seconds = parseInt(seconds);
   seconds = seconds*1000;
 
-  var total = (days+hours+minutes+seconds);
+  globalTime = (days+hours+minutes+seconds);
 
-  saveTotal(total);
-
-  minusTime = 1000;
-
-  startTimer("clock",total);
+  startTimer("clock", globalTime);
 }
 
 function resume() {
 clearInterval(timerInterval);
 document.getElementById("resume").disabled = true;
 document.getElementById("pause").disabled = false;
-pause = false;
 
-var days = document.getElementById("days").value;
-days = parseInt(days);
-days = days*86400000;
-
-var hours = document.getElementById("hours").value;
-hours = parseInt(hours);
-hours = hours*3600000;
-
-var minutes = document.getElementById("minutes").value;
-minutes = parseInt(minutes);
-minutes = minutes*60000;
-
-var seconds = document.getElementById("seconds").value;
-seconds = parseInt(seconds);
-seconds = seconds*1000;
-
-var total = (days+hours+minutes+seconds);
-
-startTimer("clock", total);
+startTimer("clock", globalTime);
 }
 
 function pause() {
+
 document.getElementById("resume").disabled = false;
 document.getElementById("pause").disabled = true;
-pause = true;
 clearInterval(timerInterval);
 }
 //Set,Resume,Pause, Code Ends**********************************************************************************************************************************************************************************************************
@@ -134,45 +111,35 @@ function saveEdits() {                                //Made my saveEdits functi
   localStorage.userEdits = new_Name;                  //Saved new name to user storage.
 }
 
-function saveTime(timeLeft) {
- var savedTimeLeft = timeLeft;
- var savedDateOfExit = new Date();
-
- localStorage.userMinusTime = minusTime;
- localStorage.userTimeLeft = savedTimeLeft;
- localStorage.userDateOfExit = savedDateOfExit;
-}
-
-function saveTotal(total) {
-  localStorage.userTotal = total;
+function saveTime() {
+  localStorage.userTimeLeft = globalTime;
+ localStorage.userDateOfExit = new Date();
 }
 
 function checkEdits() {                                                 //Made CheckEdits function.
   if(localStorage.userEdits!=null)                                      //Set check for local storage if empty or not.
   document.getElementById("edit").innerHTML = localStorage.userEdits;   //if not empty then inject local storage save to element with id "edit".
-
 }
 
 function checkSavedTime(){
   if(localStorage.userTimeLeft!=null) {
     if(localStorage.userDateOfExit!=null) {
-      document.getElementById("resume").disabled = true;
-      document.getElementById("pause").disabled = false;
+
       var timeLeft = localStorage.userTimeLeft;
+
       var dateOfExit = new Date(localStorage.userDateOfExit);
       dateOfExit = dateOfExit.getTime();
+
       var dateOfReturn = new Date();
       dateOfReturn = dateOfReturn.getTime();
-      var timeElapsed = dateOfReturn - dateOfExit;
-      //var oldMinusTime = localStorage.userMinusTime;
-      //minusTime = oldMinusTime;
-      //document.writeln(minusTime)
-      var newTime = timeLeft - timeElapsed;
 
-      if(pause == false)
-        startTimer("clock", newTime);
-      else
-        startTimer("clock", timeLeft);
+      var timeElapsed = dateOfReturn - dateOfExit;
+      document.getElementById("resume").disabled = true;
+      document.getElementById("pause").disabled = false;
+
+      globalTime = timeLeft - timeElapsed;
+
+      startTimer("clock", globalTime);
     }
   }
 }
