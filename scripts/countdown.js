@@ -9,6 +9,7 @@ window.onload = function() {          //when window loads runs function without 
 var timerInterval;
 var timeLeftOnExit;
 var minusTime = 1000;
+var pause;
 //***************//
 
 //Countdown Code Starts*********************************************************************************************************************************************************************************************************************
@@ -63,6 +64,7 @@ function set() {
   clearInterval(timerInterval);
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = false;
+  pause = false;
   var days = document.getElementById("days").value;
   days = parseInt(days);
   days = days*86400000;
@@ -92,6 +94,7 @@ function resume() {
 clearInterval(timerInterval);
 document.getElementById("resume").disabled = true;
 document.getElementById("pause").disabled = false;
+pause = false;
 
 var days = document.getElementById("days").value;
 days = parseInt(days);
@@ -117,6 +120,7 @@ startTimer("clock", total);
 function pause() {
 document.getElementById("resume").disabled = false;
 document.getElementById("pause").disabled = true;
+pause = true;
 clearInterval(timerInterval);
 }
 //Set,Resume,Pause, Code Ends**********************************************************************************************************************************************************************************************************
@@ -164,8 +168,11 @@ function checkSavedTime(){
       //minusTime = oldMinusTime;
       //document.writeln(minusTime)
       var newTime = timeLeft - timeElapsed;
-      startTimer("clock", newTime);
 
+      if(pause == false)
+        startTimer("clock", newTime);
+      else
+        startTimer("clock", timeLeft);
     }
   }
 }
