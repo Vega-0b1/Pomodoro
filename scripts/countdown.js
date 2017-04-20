@@ -64,6 +64,7 @@ function set() {
   clearInterval(timerInterval);
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = false;
+  localStorage.userPauseState = false;
 
   var days = document.getElementById("days").value;
   days = parseInt(days);
@@ -87,18 +88,20 @@ function set() {
 }
 
 function resume() {
-clearInterval(timerInterval);
-document.getElementById("resume").disabled = true;
-document.getElementById("pause").disabled = false;
+  clearInterval(timerInterval);
+  document.getElementById("resume").disabled = true;
+  document.getElementById("pause").disabled = false;
+  localStorage.userPauseState = false;
 
 startTimer("clock", globalTime);
 }
 
 function pause() {
 
-document.getElementById("resume").disabled = false;
-document.getElementById("pause").disabled = true;
-clearInterval(timerInterval);
+  document.getElementById("resume").disabled = false;
+  document.getElementById("pause").disabled = true;
+  localStorage.userPauseState = true;
+  clearInterval(timerInterval);
 }
 //Set,Resume,Pause, Code Ends**********************************************************************************************************************************************************************************************************
 
@@ -113,7 +116,7 @@ function saveEdits() {                                //Made my saveEdits functi
 
 function saveTime() {
   localStorage.userTimeLeft = globalTime;
- localStorage.userDateOfExit = new Date();
+  localStorage.userDateOfExit = new Date();
 }
 
 function checkEdits() {                                                 //Made CheckEdits function.
@@ -123,24 +126,37 @@ function checkEdits() {                                                 //Made C
 
 function checkSavedTime(){
   if(localStorage.userTimeLeft!=null) {
-    if(localStorage.userDateOfExit!=null) {
-
       var timeLeft = localStorage.userTimeLeft;
+      var pauseState = localStorage.userPauseState;
 
-      var dateOfExit = new Date(localStorage.userDateOfExit);
-      dateOfExit = dateOfExit.getTime();
+      if(pauseState == "true")
+        pauseState = true;
+      else if(pauseState == "false")
+        pauseState = false;
 
-      var dateOfReturn = new Date();
-      dateOfReturn = dateOfReturn.getTime();
 
-      var timeElapsed = dateOfReturn - dateOfExit;
-      document.getElementById("resume").disabled = true;
-      document.getElementById("pause").disabled = false;
+      if(pauseState) {
+        document.getElementById("resume").disabled = true;
+        document.getElementById("pause").disabled = false;
+        localStorage.userPauseState = false;
+        startTimer("clock",timeLeft);
+      }
+      else {
+        var dateOfExit = new Date(localStorage.userDateOfExit);
+        dateOfExit = dateOfExit.getTime();
 
-      globalTime = timeLeft - timeElapsed;
+        var dateOfReturn = new Date();
+        dateOfReturn = dateOfReturn.getTime();
 
-      startTimer("clock", globalTime);
-    }
+        var timeElapsed = dateOfReturn - dateOfExit;
+        document.getElementById("resume").disabled = true;
+        document.getElementById("pause").disabled = false;
+        localStorage.userPauseState = false;
+
+        var newTime = timeLeft - timeElapsed;
+
+        startTimer("clock", newTime);
+      }
   }
 }
 //Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************
