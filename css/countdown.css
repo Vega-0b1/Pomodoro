@@ -39,6 +39,21 @@ h1.big{
   letter-spacing: 2px;
 }
 
+#time span{
+   width: 100px;
+}
+
+
+
+#sliderNum span{
+  position: absolute;
+  left: 0;
+  top: 80%;
+  width: 100%;
+  text-align: center;
+  font-size: 18px;
+}
+
 span.turn{
   animation: turn 0.7s ease forwards;
 }
@@ -47,4 +62,3 @@ span.turn{
   0%{transform: rotateX(0deg)}
   100%{transform: rotateX(360deg)}
 }
-
