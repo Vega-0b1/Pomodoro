@@ -43,10 +43,20 @@
 						<span>Minutes</span>	<!--This does nothing only puts letters under timer.-->
 						<span>Seconds</span>	<!--This does nothing only puts letters under timer.-->
 						<div class = "time">
-							<input id = "days" type = "number" value = "0"/>
-							<input id = "hours" type = "number" value = "0"/>
-							<input id = "minutes" type = "number" value = "15"/>
-							<input id = "seconds" type = "number" value = "0"/>
+							<input id = "days"  type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/> <!-- Added code to add slider element -->
+							<input id = "hours" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/>
+							<input id = "minutes" type="range" min="0" max="50" value="25" step="1" onchange="showValue(this.value)"/>
+							<input id = "seconds" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/>
+
+							<span id="range">0</span> <!-- this shows the number in the bottom left conrner -->
+							<script type="text/javascript">
+							function showValue(newValue)
+							{
+								document.getElementById("range").innerHTML=newValue;
+							}
+							</script>
+
+
 						</div>
 						<input type = "button" value = "Set Time" onclick ="set()"/>
 						<input id = "pause" type = "button" value = "Pause" onclick ="pause()"/>
