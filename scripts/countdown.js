@@ -9,30 +9,43 @@ window.onload = function() {          //when window loads runs function without 
 var timerInterval;
 var timeLeftOnExit;
 var globalTime;
+var shouldBePaused;
 //***************//
 
 //Countdown Code Starts*********************************************************************************************************************************************************************************************************************
 function startTimer(passedId, passedTime) {
   globalTime = passedTime;
   timerInterval = setInterval(function(){      //created interval that keeps running every 1000 milisecond
-    var clock = document.getElementById(passedId);
-    var timer = updateTimer();
 
-    clock.innerHTML = "<span>" + timer.days + "</span>"     //span[0]
-                    + "<span>" + timer.hours + "</span>"    //span[1]
-                    + "<span>" + timer.minutes + "</span>"  //span[2]
-                    + "<span>" + timer.seconds + "</span>"; //span[3]
 
-    var spans = clock.getElementsByTagName("span");
-    animateClock(spans[3]); //animates seconds every second
-    if(timer.seconds == 59) animateClock(spans[2]); //animates minutes only if seconds = 59
-    if(timer.minutes == 59 && timer.seconds == 59) animateClock(spans[1]);  //animates hour only if seconds and minutes = 59
-    if(timer.hours == 23 && timer.minutes == 59 && timer.seconds == 59) animateClock(spans[0]); //animates days only if hours, minutes, and seconds = 59
+      var clock = document.getElementById(passedId);
 
-    if(timer.total < 1){            //if statement check
-      clearInterval(timerInterval); // if true clears interval we created earlier
-      clock.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>"; //then sets everything to zero
-    }
+
+        var timer = updateTimer();
+
+        clock.innerHTML = "<span>" + timer.days + "</span>"     //span[0]
+                        + "<span>" + timer.hours + "</span>"    //span[1]
+                        + "<span>" + timer.minutes + "</span>"  //span[2]
+                        + "<span>" + timer.seconds + "</span>"; //span[3]
+
+       var spans = clock.getElementsByTagName("span");
+       animateClock(spans[3]); //animates seconds every second
+       if(timer.seconds == 59) animateClock(spans[2]); //animates minutes only if seconds = 59
+       if(timer.minutes == 59 && timer.seconds == 59) animateClock(spans[1]);  //animates hour only if seconds and minutes = 59
+       if(timer.hours == 23 && timer.minutes == 59 && timer.seconds == 59) animateClock(spans[0]); //animates days only if hours, minutes, and seconds = 59
+
+       if(timer.total < 1){            //if statement check
+         clearInterval(timerInterval); // if true clears interval we created earlier
+         clock.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>"; //then sets everything to zero
+       }
+
+       if(shouldBePaused == true) {
+         clearInterval(timerInterval);
+
+       }
+
+
+
   }, 1000);   //end of interval but keeps going every 1000 miliseconds
 }    //out of interval no more code to run.
 
@@ -65,6 +78,7 @@ function set() {
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = false;
   localStorage.userPauseState = false;
+  shouldBePaused = false;
 
   var days = document.getElementById("days").value;
   days = parseInt(days);
@@ -84,6 +98,7 @@ function set() {
 
   globalTime = (days+hours+minutes+seconds);
 
+
   startTimer("clock", globalTime);
 }
 
@@ -92,6 +107,7 @@ function resume() {
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = false;
   localStorage.userPauseState = false;
+  shouldBePaused = false;
 
 startTimer("clock", globalTime);
 }
@@ -127,6 +143,7 @@ function checkEdits() {                                                 //Made C
 function checkSavedTime(){
   if(localStorage.userTimeLeft!=null) {
       var timeLeft = localStorage.userTimeLeft;
+      timeLeft = parseInt(timeLeft);
       var pauseState = localStorage.userPauseState;
 
       if(pauseState == "true")
@@ -136,9 +153,11 @@ function checkSavedTime(){
 
 
       if(pauseState) {
-        document.getElementById("resume").disabled = true;
-        document.getElementById("pause").disabled = false;
-        localStorage.userPauseState = false;
+        document.getElementById("resume").disabled = false;
+        document.getElementById("pause").disabled = true;
+
+        shouldBePaused = true;
+        timeLeft = timeLeft + 1000;
         startTimer("clock",timeLeft);
       }
       else {
