@@ -30,12 +30,13 @@
 
 				<div id = "countdown">
 
-					<div id = "edit">
-						<!-- made id for js save functions to find editable text
-						<h1 class = "big" contenteditable = true>Name</h1><hr>	<big class is just css styling>
-						<input type = "button" value = "Save Name" onclick = "saveEdits()"/>
-						-->
-					</div>
+					<div id = "edit">  </div>	<!-- made id for js save functions to find editable text
+																		<h1 class = "big" contenteditable = true>Name</h1><hr>	<big class is just css styling>
+																		<input type = "button" value = "Save Name" onclick = "saveEdits()"/>
+																		-->
+					<div id = "settings">
+						<input id = "daySetting" type = "checkbox" onchange = "omitDays()"/> Days
+
 
 					<div id = "clock"> <!-- Clock numbers gets injected here--> </div>
 
@@ -46,9 +47,9 @@
 						<span>Seconds</span>	<!--This does nothing only puts letters under timer.-->
 						<div class = "time">
 							<input id = "days"  type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/> <!-- Added code to add slider element -->
-							<input id = "hours" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/>
-							<input id = "minutes" type="range" min="0" max="50" value="25" step="1" onchange="showValue(this.value)"/>
-							<input id = "seconds" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/>
+							<input id = "hours" type="range" min="0" max="24" value="0" step="1" onchange="showValue(this.value)"/>
+							<input id = "minutes" type="range" min="0" max="59" value="25" step="1" onchange="showValue(this.value)"/>
+							<input id = "seconds" type="range" min="0" max="59" value="0" step="1" onchange="showValue(this.value)"/>
 
 							<div id = "sliderNum">
 								<span id="range">0</span> <!-- this shows the number in the bottom left conrner -->
