@@ -42,12 +42,12 @@
 					<div id = "clock"> <!-- Clock numbers gets injected here--> </div>
 
 					<div id = "units">			<!-- Id was mader for css styling styling will be applied to span tags below-->
-						<span>Days</span>			<!--This does nothing only puts letters under timer.-->
+						<span id = "daysName">Days</span>			<!--This does nothing only puts letters under timer.-->
 						<span>Hours</span>		<!--This does nothing only puts letters under timer.-->
 						<span>Minutes</span>	<!--This does nothing only puts letters under timer.-->
 						<span>Seconds</span>	<!--This does nothing only puts letters under timer.-->
 						<div class = "time">
-							<input id = "days"  type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/> <!-- Added code to add slider element -->
+							<input id = "daysSlider" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/> <!-- Added code to add slider element -->
 							<input id = "hours" type="range" min="0" max="24" value="0" step="1" onchange="showValue(this.value)"/>
 							<input id = "minutes" type="range" min="0" max="59" value="25" step="1" onchange="showValue(this.value)"/>
 							<input id = "seconds" type="range" min="0" max="59" value="0" step="1" onchange="showValue(this.value)"/>
