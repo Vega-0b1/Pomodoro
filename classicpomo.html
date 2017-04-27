@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta charset = "utf-8">
+		<title>Team Project</title>
+		<link rel = "stylesheet" href = "css/main.css">
+		<link rel = "stylesheet" href = "css/classicStyle.css">
+		<script src = "scripts/countdownClassic.js"></script>
+
+	</head>
+
+	<body>
+
+		<div class = "wrapper">	<!-- start of wrapper-->
+
+			<header class = "title-margin">
+
+				<h1>Pomodoro Starting Point</h1>
+
+					<ul class = "menu">
+						<li><a href = index.html>Home</a></li>					<!--button link to home-->
+						<li><a href = countdown.html>Pomodoro</a></li>	<!--button link to PomPom page-->
+						<li><a href = classicpomo.html>Pomodoro classic</a></li>
+					</ul>
+
+			</header>
+
+			<section>
+
+				<div id = "countdown">
+
+					<div id = "edit">  </div>
+					<h1 contenteditable = true>What are you working on?</h1><hr>
+					<input type = "button" value = "Save task" onclick = "saveEdits()"/>
+
+					<!--<div id = "settings">
+						<input id = "daySetting" type = "checkbox" onchange = "omitDays()"/> Days
+				 </div> -->
+
+
+					<div id = "clock"> <!-- Clock numbers gets injected here--> </div>
+
+					<div id = "units">			<!-- Id was mader for css styling styling will be applied to span tags below-->
+									<!--This does nothing only puts letters under timer.-->
+						<!--This does nothing only puts letters under timer.-->
+						<span>Minutes</span>	<!--This does nothing only puts letters under timer.-->
+						<span>Seconds</span>	<!--This does nothing only puts letters under timer.-->
+						<div class = "time">
+
+
+						</div>
+						<input type = "button" value = "Start" onclick ="set()"/>
+						<input id = "pause" type = "button" value = "Pause" onclick ="pause()"/>
+						<input id = "resume" type = "button" value = "Resume" onclick = "resume()"/>
+					</div>
+
+				</div>
+
+			</section>
+
+			<footer>
+								<!-- empty footer can add about,contact us, or support information here.-->
+			</footer>
+
+		</div> <!-- End of wrapper-->
+
+
+
+	</body>
+
+</html>
