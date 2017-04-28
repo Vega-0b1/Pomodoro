@@ -31,31 +31,20 @@
 
 				<div id = "countdown">
 
-					<div id = "edit">  </div>
-					<h1 contenteditable = true>What are you working on?</h1><hr>
-					<input type = "button" value = "Save task" onclick = "saveEdits()"/>
-
-					<!--<div id = "settings">
-						<input id = "daySetting" type = "checkbox" onchange = "omitDays()"/> Days
-				 </div> -->
-
+					<!--<div id = "edit">  </div>
+					<h1 contenteditable = true> What are you working on?</h1><hr>
+					<input type = "button" value = "Save task" onclick = "saveEdits()"/> -->
 
 					<div id = "clock"> <!-- Clock numbers gets injected here--> </div>
-
 					<div id = "units">			<!-- Id was mader for css styling styling will be applied to span tags below-->
-									<!--This does nothing only puts letters under timer.-->
-						<!--This does nothing only puts letters under timer.-->
 						<span>Minutes</span>	<!--This does nothing only puts letters under timer.-->
 						<span>Seconds</span>	<!--This does nothing only puts letters under timer.-->
-						<div class = "time">
-
-
 						</div>
-						<input type = "button" value = "Start" onclick ="set()"/>
+						<div class = "buttons">
+						<input id="reset" type = "button" value = "Reset" onclick ="set()"/>
 						<input id = "pause" type = "button" value = "Pause" onclick ="pause()"/>
-						<input id = "resume" type = "button" value = "Resume" onclick = "resume()"/>
-					</div>
-
+						<input id = "resume" type = "button" value = "Play" onclick = "resume()"/>
+				</div>
 				</div>
 
 			</section>

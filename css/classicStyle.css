@@ -11,9 +11,11 @@ h1.big{
 #countdown{
   width: 850px;
   margin: 15% auto;
+  text-align: center;
 }
 #clock span{
-  float: left;
+  display: inline-block;
+  vertical-align: middle;
   text-align: center;
   font-size: 84px;
   margin: 0 2.5%;
@@ -23,6 +25,7 @@ h1.big{
   border-radius: 100px;
   box-sizing: border-box;
   background: white;
+
 }
 
 #clock:after{
@@ -32,7 +35,9 @@ h1.big{
 }
 
 #units span{
-  float: left;  width: 25%;
+  display: inline-block;
+  vertical-align: middle;
+  width: 25%;
   text-align: center;
   margin-top: 30px;
   color: black;
@@ -41,18 +46,8 @@ h1.big{
   letter-spacing: 2px;
 }
 
-#time span{
-   width: 100px;
-}
 
-#sliderNum span{
-  position: absolute;
-  left: 0;
-  top: 80%;
-  width: 100%;
-  text-align: center;
-  font-size: 18px;
-}
+
 
 span.turn{
   animation: turn 0.7s ease forwards;

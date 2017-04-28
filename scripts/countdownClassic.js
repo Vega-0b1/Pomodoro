@@ -75,16 +75,16 @@ function animateClock(span){
 //Set,Resume,Pause, Code Starts********************************************************************************************************************************************************************************************************
 function set() {
   clearInterval(timerInterval);
-  document.getElementById("resume").disabled = true;
-  document.getElementById("pause").disabled = false;
-  localStorage.userPauseState = false;
-  shouldBePaused = false;
+  document.getElementById("resume").disabled = false;
+  document.getElementById("pause").disabled = true;
+  localStorage.userPauseState = true;
+  shouldBePaused = true;
 
   var minutes = 25;
   minutes = parseInt(minutes);
   minutes = minutes*60000;
 
-  var seconds = 0;
+  var seconds = 01;
   seconds = parseInt(seconds);
   seconds = seconds*1000;
 
