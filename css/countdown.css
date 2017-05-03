@@ -4,7 +4,7 @@ h1.big{
   text-align: center;
   font-size: 80px;
   letter-spacing: 10px;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 #countdown{
   width: 850px;
@@ -14,7 +14,8 @@ h1.big{
   float: left;
   text-align: center;
   font-size: 84px;
-  margin: 0 2.5%;
+  margin: 2.5%;
+  margin top:30px;
   color: red;
   padding: 20px;
   width: 20%;
@@ -51,7 +52,8 @@ h1.big{
   top: 80%;
   width: 100%;
   text-align: center;
-  font-size: 18px;
+  font-size: 35px;
+  color: black;
 }
 
 span.turn{
@@ -61,4 +63,23 @@ span.turn{
 @keyframes turn{
   0%{transform: rotateX(0deg)}
   100%{transform: rotateX(360deg)}
+}
+
+#buttons input {
+  position: relative;
+  text-align: center;
+  width: 10%;
+  font-size: 18px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  left: 290px;
+}
+
+#sliders input{
+  position: relative;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-right: 75px;
+  left: 40px
 }

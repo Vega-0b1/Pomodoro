@@ -36,7 +36,7 @@ function startTimer(passedId, passedTime) {
           if(timer.seconds == 59) animateClock(spans[2]); //animates minutes only if seconds = 59
           if(timer.minutes == 59 && timer.seconds == 59) animateClock(spans[1]);  //animates hour only if seconds and minutes = 59
           if(timer.hours == 23 && timer.minutes == 59 && timer.seconds == 59) animateClock(spans[0]); //animates days only if hours, minutes, and seconds = 59
-          
+
           if(timer.total < 1){            //if statement check
             clearInterval(timerInterval); // if true clears interval we created earlier
             clock.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>"; //then sets everything to zero
@@ -180,6 +180,11 @@ function checkSavedTime(){
         startTimer("clock", newTime);
       }
   }
+}
+
+function showValue(newValue)
+{
+  document.getElementById("range").innerHTML=newValue;
 }
 
 
