@@ -11,8 +11,6 @@ var timerInterval;
 var timeLeftOnExit;
 var globalTime;
 var shouldBePaused;
-var daysOn;
-var incrementOnChange = 1;
 //***************//
 
 //Countdown Code Starts*********************************************************************************************************************************************************************************************************************
@@ -26,7 +24,6 @@ function startTimer(passedId, passedTime) {
 
         var timer = updateTimer();
 
-        if(daysOn) {
           document.getElementById("daysName").style.visibility = "visible";
           document.getElementById("daysSlider").style.visibility = "visible";
           clock.innerHTML = "<span>" + timer.days + "</span>"     //span[0]
@@ -39,24 +36,7 @@ function startTimer(passedId, passedTime) {
           if(timer.seconds == 59) animateClock(spans[2]); //animates minutes only if seconds = 59
           if(timer.minutes == 59 && timer.seconds == 59) animateClock(spans[1]);  //animates hour only if seconds and minutes = 59
           if(timer.hours == 23 && timer.minutes == 59 && timer.seconds == 59) animateClock(spans[0]); //animates days only if hours, minutes, and seconds = 59
-          }
-          else {
-            document.getElementById("daysName").style.visibility = "hidden";
-            document.getElementById("daysSlider").style.visibility = "hidden";
-            clock.innerHTML = "<span>" + timer.hours + "</span>"    //span[0]
-                            + "<span>" + timer.minutes + "</span>"  //span[1]
-                            + "<span>" + timer.seconds + "</span>"; //span[2]
-
-            var spans = clock.getElementsByTagName("span");
-            animateClock(spans[2]); //animates seconds every second
-            if(timer.seconds == 59) animateClock(spans[1]); //animates minutes only if seconds = 59
-            if(timer.minutes == 59 && timer.seconds == 59) animateClock(spans[0]);  //animates hour only if seconds and minutes = 59
-
-
-
-
-          }
-
+          
           if(timer.total < 1){            //if statement check
             clearInterval(timerInterval); // if true clears interval we created earlier
             clock.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>"; //then sets everything to zero
@@ -202,42 +182,5 @@ function checkSavedTime(){
   }
 }
 
-function checkUserPresets() {
-  if(localStorage.userDaysPreset!=null) {
-   if(localStorage.userDaysPreset == "true") {
-     daysOn = true;
-     document.getElementById("daySetting").checked = true;
-   }
-   else if(localStorage.userDaysPreset == "false") {
-     daysOn = false
-     document.getElementById("daySetting").checked = false;
-   }
 
-   incrementOnChange = localStorage.userSaveIncrementChange;
- }
-
-
-
-}
 //Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************
-
-
-
-//Clock Modification Code Starts **********************************************************************************
-function omitDays() {
-  incrementOnChange = ++incrementOnChange;
-  if(incrementOnChange >= 10) incrementOnchange = 0;
-  localStorage.userSaveIncrementChange = incrementOnChange;
-  if(incrementOnChange % 2) {
-    daysOn = false;
-    localStorage.userDaysPreset = daysOn;
-  }
-  else daysOn = true;
-    localStorage.userDaysPreset = daysOn;
-}
-
-
-
-
-
-//Clock Modification Code Ends *************************************************************************************
