@@ -45,10 +45,10 @@
 					</div>
 
 					<div id = "sliders">
-							<input id = "daysSlider" type="range" min="0" max="50" value="0" step="1" onchange="showValue(this.value)"/> <!-- Added code to add slider element -->
-							<input id = "hours" type="range" min="0" max="24" value="0" step="1" onchange="showValue(this.value)"/>
-							<input id = "minutes" type="range" min="0" max="59" value="25" step="1" onchange="showValue(this.value)"/>
-							<input id = "seconds" type="range" min="0" max="59" value="0" step="1" onchange="showValue(this.value)"/>
+							<input id = "days" type="range" min="0" max="50" value="0" step="1" onchange="startStop(); showValue(this.value)"/> <!-- Added code to add slider element -->
+							<input id = "hours" type="range" min="0" max="23" value="0" step="1" onchange="startStop(); showValue(this.value)"/>
+							<input id = "minutes" type="range" min="0" max="59" value="25" step="1" onchange="startStop(); showValue(this.value)"/>
+							<input id = "seconds" type="range" min="0" max="59" value="0" step="1" onchange="startStop(); showValue(this.value)"/>
 					</div>
 
 					<div id = "sliderNum">

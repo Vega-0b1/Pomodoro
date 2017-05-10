@@ -3,7 +3,6 @@ window.onload = function() {          //when window loads runs function without 
   document.getElementById("pause").disabled = true;
   checkSavedTime();
   checkEdits();                      //on load check for local storage for previous edits.
-  checkUserPresets();
 };
 
 //global variables//
@@ -11,6 +10,7 @@ var timerInterval;
 var timeLeftOnExit;
 var globalTime;
 var shouldBePaused;
+var sliderTampered;
 //***************//
 
 //Countdown Code Starts*********************************************************************************************************************************************************************************************************************
@@ -24,8 +24,6 @@ function startTimer(passedId, passedTime) {
 
         var timer = updateTimer();
 
-          document.getElementById("daysName").style.visibility = "visible";
-          document.getElementById("daysSlider").style.visibility = "visible";
           clock.innerHTML = "<span>" + timer.days + "</span>"     //span[0]
                           + "<span>" + timer.hours + "</span>"    //span[1]
                           + "<span>" + timer.minutes + "</span>"  //span[2]
@@ -53,7 +51,11 @@ function startTimer(passedId, passedTime) {
 }    //out of interval no more code to run.
 
 function updateTimer() {
+  if(sliderTampered) globalTime = globalTime + 1000;
+  sliderTampered = false;
+
   var time = globalTime = globalTime - 1000;  //provided time minus current time equals time left.
+
   saveTime();
 
   return {
@@ -78,12 +80,15 @@ function animateClock(span){
 //Set,Resume,Pause, Code Starts********************************************************************************************************************************************************************************************************
 function set() {
   clearInterval(timerInterval);
+  if(sliderTampered != true){
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = false;
   localStorage.userPauseState = false;
   shouldBePaused = false;
+}
 
-  var days = document.getElementById("daysSlider").value;
+
+  var days = document.getElementById("days").value;
   days = parseInt(days);
   days = days*86400000;
 
@@ -187,5 +192,14 @@ function showValue(newValue)
   document.getElementById("range").innerHTML=newValue;
 }
 
+function startStop() {
+
+  document.getElementById("resume").disabled = false;
+  document.getElementById("pause").disabled = true;
+  sliderTampered = true;
+  shouldBePaused = true;
+  set();
+
+}
 
 //Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************
