@@ -40,22 +40,6 @@ h1.big{
   letter-spacing: 2px;
 }
 
-#time span{
-   width: 100px;
-}
-
-
-
-#sliderNum span{
-  position: absolute;
-  left: 0;
-  top: 80%;
-  width: 100%;
-  text-align: center;
-  font-size: 35px;
-  color: black;
-}
-
 span.turn{
   animation: turn 0.7s ease forwards;
 }
@@ -77,12 +61,17 @@ span.turn{
   left: 213px;
 }
 
-#sliders input{
+#settings div{
+  float:left;
+  margin:auto;
   position: relative;
-  text-align: center;
-  width: 10%;
-  margin-top: 15px;
-  margin-bottom: 15px;
-  margin-right: 112px;
-  left: 50px
+}
+
+div.sliders{
+  width: 50%;
+}
+
+div.deadlineCalendar{
+  width: 
+  position:relative;
 }

@@ -2,13 +2,11 @@
 <html>
 
 	<head>
-
 		<meta charset = "utf-8">
 		<title>Team Project</title>
 		<link rel = "stylesheet" href = "css/main.css">
 		<link rel = "stylesheet" href = "css/countdown.css">
 		<script src = "scripts/countdown.js"></script>
-
 	</head>
 
 	<body>
@@ -27,11 +25,10 @@
 
 			</header>
 
+
 			<section>
-
 				<div id = "countdown">
-
-					<div id = "edit">  </div>
+					<div id = "edit"></div>
 					<h1 class = "big" contenteditable = true>Name</h1>
 					<input type = "button" value = "Save Name" onclick = "saveEdits()"/><hr>
 
@@ -44,28 +41,32 @@
 						<span>Seconds</span>	<!--This does nothing only puts letters under timer.-->
 					</div>
 
-					<div id = "sliders">
-							<input id = "days" type="range" min="0" max="50" value="0" step="1" onchange="startStop(); showValue(this.value)"/> <!-- Added code to add slider element -->
-							<input id = "hours" type="range" min="0" max="23" value="0" step="1" onchange="startStop(); showValue(this.value)"/>
-							<input id = "minutes" type="range" min="0" max="59" value="25" step="1" onchange="startStop(); showValue(this.value)"/>
-							<input id = "seconds" type="range" min="0" max="59" value="0" step="1" onchange="startStop(); showValue(this.value)"/>
-					</div>
-
-					<div id = "sliderNum">
-						<span id="range">0</span> <!-- this shows the number in the bottom left conrner -->
-					</div>
-
-
 					<div id = "buttons">
-						<input type = "button" value = "Set Time" onclick ="set()"/>
+						<input type = "button" value = "Settings" onclick = "settings()"/>
+						<input type = "button" value = "Replay" onclick ="set()"/>
 						<input id = "pause" type = "button" value = "Pause" onclick ="pause()"/>
-						<input id = "resume" type = "button" value = "Resume" onclick = "resume()"/>
+						<input id = "resume" type = "button" value = "Start" onclick = "resume()"/>
 					</div>
 
-					</div>
+					<div id = "settings">
+						<div class = "sliders">
+								<input type = "button" value = "Countdown"><br>
+								<input id = "days" class="sliderRange" type="range" min="0" max ="90" value="0" step="1" onchange="startStop()"/><!-- Added code to add slider element -->
+								Days <span class="sliderValue">0</span>
 
+								<input id = "hours" class = "sliderRange" type="range" min="0" max="23" value="0" step="1" onchange="startStop()"/>
+								Hours <span class="sliderValue">0</span>
+
+								<input id = "minutes" class = "sliderRange" type="range" min="0" max="59" value="25" step="1" onchange="startStop()"/>
+								Minutes <span class="sliderValue">0</span>
+
+								<input id = "seconds" class = "sliderRange" type="range" min="0" max="59" value="0" step="1" onchange="startStop()"/>
+								Seconds <span class="sliderValue">0</span>
+						</div>
+
+
+					<br>
 				</div>
-
 			</section>
 
 			<footer>
@@ -74,7 +75,8 @@
 
 		</div> <!-- End of wrapper-->
 
-
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src = "scripts/jqueryCountdown.js"></script>
 
 	</body>
 

@@ -11,6 +11,7 @@ var timeLeftOnExit;
 var globalTime;
 var shouldBePaused;
 var sliderTampered;
+var show = false;
 //***************//
 
 //Countdown Code Starts*********************************************************************************************************************************************************************************************************************
@@ -187,19 +188,22 @@ function checkSavedTime(){
   }
 }
 
-function showValue(newValue)
-{
-  document.getElementById("range").innerHTML=newValue;
-}
-
 function startStop() {
-
   document.getElementById("resume").disabled = false;
   document.getElementById("pause").disabled = true;
   sliderTampered = true;
   shouldBePaused = true;
   set();
-
 }
 
+function settings() {
+  if(show == true) {
+  document.getElementById("settings").style.display = "inline";
+  show = false;
+  }
+  else{
+    document.getElementById("settings").style.display = "none";
+    show = true;
+  }
+}
 //Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************
