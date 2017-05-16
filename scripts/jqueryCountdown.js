@@ -1,4 +1,3 @@
-
 var rangeSlider = function(){
   var slider = $(".sliders"),
       range = $('.sliderRange'),

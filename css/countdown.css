@@ -9,19 +9,21 @@ h1.big{
 #countdown{
   width: 850px;
   margin: 15% auto;
+  text-align:center;
 }
 #clock span{
-  float: left;
+  display: inline-block;
+  vertical-align: middle;
   text-align: center;
   font-size: 84px;
-  margin: 2.5%;
-  margin top:30px;
-  color: red;
+  margin: 0 2.5%;
+  color: black;
   padding: 20px;
   width: 20%;
   border-radius: 100px;
   box-sizing: border-box;
   background: white;
+
 }
 
 #clock:after{
@@ -31,6 +33,18 @@ h1.big{
 }
 #units span{
   float: left;
+  width: 25%;
+  text-align: center;
+  margin-top: 30px;
+  color: black;
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 2px;
+}
+
+#unitsClassic span{
+  display: inline-block;
+  vertical-align: middle;
   width: 25%;
   text-align: center;
   margin-top: 30px;
@@ -58,36 +72,46 @@ span.turn{
   margin-bottom: 15px;
   margin-left: 5px;
   margin-right:5px;
-  left: 140px;
   border-radius: 100px;
-  
+
 }
 
 #settings div{
   float:left;
-  margin:auto;
+  margin:1% 1%;
   position: relative;
+  width: 31%;
 }
 
 input.sliderRange{
-  width: 19%;
+  width: 18%;
   position:relative;
   left:10px;
   margin-right:14px;
 }
 
 
-h3.configText{
-  background-color:grey;
+div.configText{
+  background-color:whitesmoke;
+  border-radius: 10px;
   float:left;
-  margin: 1% 15px;
+  margin: 1% 20%;
   text-align:center;
   width: 28%;
-  height:150px;
+  height:160px;
   display: inline-block;
-  
-  
-  
 }
 
+input.intervalSet{
+  margin:1px 5px;
+  width: 80%;
+}
 
+h4.intervalName{
+  margin:1px auto
+}
+
+span.sliderValue{
+  font-size: 15pt;
+  color:black;
+}

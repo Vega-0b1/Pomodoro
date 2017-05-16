@@ -2,8 +2,6 @@ window.onload = function() {          //when window loads runs function without 
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = true;
   checkSavedTime();
-  checkEdits();                      //on load check for local storage for previous edits.
-  checkUserPresets();
 };
 
 //global variables//
@@ -11,8 +9,7 @@ var timerInterval;
 var timeLeftOnExit;
 var globalTime;
 var shouldBePaused;
-var daysOn;
-var incrementOnChange = 1;
+var show = false;
 //***************//
 
 //Countdown Code Starts*********************************************************************************************************************************************************************************************************************
@@ -41,10 +38,6 @@ function startTimer(passedId, passedTime) {
 
           if(shouldBePaused == true)
             clearInterval(timerInterval);
-
-
-
-
 
   }, 1000);   //end of interval but keeps going every 1000 miliseconds
 }    //out of interval no more code to run.
@@ -77,7 +70,7 @@ function set() {
   clearInterval(timerInterval);
   document.getElementById("resume").disabled = false;
   document.getElementById("pause").disabled = true;
-  localStorage.userPauseState = true;
+  localStorage.userPauseStateClassic = true;
   shouldBePaused = true;
 
   var minutes = 25;
@@ -98,7 +91,7 @@ function resume() {
   clearInterval(timerInterval);
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = false;
-  localStorage.userPauseState = false;
+  localStorage.userPauseStateClassic = false;
   shouldBePaused = false;
 
 startTimer("clock", globalTime);
@@ -108,7 +101,7 @@ function pause() {
 
   document.getElementById("resume").disabled = false;
   document.getElementById("pause").disabled = true;
-  localStorage.userPauseState = true;
+  localStorage.userPauseStateClassic = true;
   clearInterval(timerInterval);
 }
 //Set,Resume,Pause, Code Ends**********************************************************************************************************************************************************************************************************
@@ -116,27 +109,17 @@ function pause() {
 
 
 //Save Name/Timer Code Starts*******************************************************************************************************************************************************************************************************
-function saveEdits() {                                //Made my saveEdits function.
-  var edit_Name = document.getElementById("edit");    //Then grabbed element with id "edit" in Html and set to var.
-  var new_Name = edit_Name.innerHTML;                 //Grabbed new changes to element and assigned to new var.
-  localStorage.userEdits = new_Name;                  //Saved new name to user storage.
-}
 
 function saveTime() {
-  localStorage.userTimeLeft = globalTime;
-  localStorage.userDateOfExit = new Date();
-}
-
-function checkEdits() {                                                 //Made CheckEdits function.
-  if(localStorage.userEdits!=null)                                      //Set check for local storage if empty or not.
-  document.getElementById("edit").innerHTML = localStorage.userEdits;   //if not empty then inject local storage save to element with id "edit".
+  localStorage.userTimeLeftClassic = globalTime;
+  localStorage.userDateOfExitClassic = new Date();
 }
 
 function checkSavedTime(){
-  if(localStorage.userTimeLeft!=null) {
-      var timeLeft = localStorage.userTimeLeft;
+  if(localStorage.userTimeLeftClassic!=null) {
+      var timeLeft = localStorage.userTimeLeftClassic;
       timeLeft = parseInt(timeLeft);
-      var pauseState = localStorage.userPauseState;
+      var pauseState = localStorage.userPauseStateClassic;
 
       if(pauseState == "true")
         pauseState = true;
@@ -153,7 +136,7 @@ function checkSavedTime(){
         startTimer("clock",timeLeft);
       }
       else {
-        var dateOfExit = new Date(localStorage.userDateOfExit);
+        var dateOfExit = new Date(localStorage.userDateOfExitClassic);
         dateOfExit = dateOfExit.getTime();
 
         var dateOfReturn = new Date();
@@ -162,7 +145,7 @@ function checkSavedTime(){
         var timeElapsed = dateOfReturn - dateOfExit;
         document.getElementById("resume").disabled = true;
         document.getElementById("pause").disabled = false;
-        localStorage.userPauseState = false;
+        localStorage.userPauseStateClassic = false;
 
         var newTime = timeLeft - timeElapsed;
 
@@ -171,42 +154,37 @@ function checkSavedTime(){
   }
 }
 
-function checkUserPresets() {
-  if(localStorage.userDaysPreset!=null) {
-   if(localStorage.userDaysPreset == "true") {
-     daysOn = true;
-     document.getElementById("daySetting").checked = true;
-   }
-   else if(localStorage.userDaysPreset == "false") {
-     daysOn = false
-     document.getElementById("daySetting").checked = false;
-   }
 
-   incrementOnChange = localStorage.userSaveIncrementChange;
- }
-
-
-
-}
 //Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************
 
 
 
 //Clock Modification Code Starts **********************************************************************************
-function omitDays() {
-  incrementOnChange = ++incrementOnChange;
-  if(incrementOnChange >= 10) incrementOnchange = 0;
-  localStorage.userSaveIncrementChange = incrementOnChange;
-  if(incrementOnChange % 2) {
-    daysOn = false;
-    localStorage.userDaysPreset = daysOn;
-  }
-  else daysOn = true;
-    localStorage.userDaysPreset = daysOn;
+function startStop() {
+  document.getElementById("resume").disabled = false;
+  document.getElementById("pause").disabled = true;
+  sliderTampered = true;
+  shouldBePaused = true;
+  set();
 }
 
+function settings() {
+  if(show == true) {
+  document.getElementById("settings").style.display = "inline";
+  show = false;
+  }
+  else{
+    document.getElementById("settings").style.display = "none";
+    show = true;
+  }
+}
 
+function setPom(){
+  var pomIntervals = document.getElementsByClassName("intervalSet");
 
-
+  var work = pomIntervals[0].value;
+  var fun = pomIntervals[1].value;
+  var longFun = pomIntervals[2].value;
+}
 
 //Clock Modification Code Ends *************************************************************************************

@@ -206,4 +206,14 @@ function settings() {
     show = true;
   }
 }
+
+function setPom(){
+  var pomIntervals = document.getElementsByClassName("intervalSet");
+
+  var work = pomIntervals[0].value;
+  var fun = pomIntervals[1].value;
+  var longFun = pomIntervals[2].value;
+}
+
+
 //Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************
