@@ -76,10 +76,18 @@ input.sliderRange{
   margin-right:14px;
 }
 
-#pomodoroTask div{
-  margin:auto;
+
+h3.configText{
+  background-color:grey;
+  float:left;
+  margin: 1% 15px;
+  text-align:center;
+  width: 28%;
+  height:150px;
+  display: inline-block;
+  
+  
+  
 }
-
-
 
 
