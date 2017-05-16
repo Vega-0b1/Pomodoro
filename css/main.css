@@ -30,7 +30,7 @@ p {
 header {
 
   border-radius: 8px 8px 0 0;
-  background: #003566;
+  background: #547980;
   position: relative;
   padding: 15px 20px;
   border-bottom: 1px solid #B2D2E1;
@@ -55,7 +55,7 @@ header ul {
   top: 20px;
   height: 40px;
   padding: 1px 0;
-  background: teal;
+  background: #639099;
   border-radius: 7px;
   width: auto;
 }
