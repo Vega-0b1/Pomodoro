@@ -58,7 +58,9 @@ span.turn{
   margin-bottom: 15px;
   margin-left: 5px;
   margin-right:5px;
-  left: 213px;
+  left: 140px;
+  border-radius: 100px;
+  
 }
 
 #settings div{
@@ -67,11 +69,17 @@ span.turn{
   position: relative;
 }
 
-div.sliders{
-  width: 50%;
+input.sliderRange{
+  width: 19%;
+  position:relative;
+  left:10px;
+  margin-right:14px;
 }
 
-div.deadlineCalendar{
-  width: 
-  position:relative;
+#pomodoroTask div{
+  margin:auto;
 }
+
+
+
+
