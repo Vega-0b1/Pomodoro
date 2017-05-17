@@ -30,10 +30,6 @@
 
 				<div id = "countdown">
 
-					<!--<div id = "edit">  </div>
-					<h1 contenteditable = true> What are you working on?</h1><hr>
-					<input type = "button" value = "Save task" onclick = "saveEdits()"/> -->
-
 					<div id = "clock"> <!-- Clock numbers gets injected here--> </div>
 					<div id = "unitsClassic">			<!-- Id was mader for css styling styling will be applied to span tags below-->
 						<span>Minutes</span>	<!--This does nothing only puts letters under timer.-->
@@ -44,39 +40,36 @@
 						<input id="reset" type = "button" value = "Reset" onclick ="set()"/>
 						<input id = "pause" type = "button" value = "Pause" onclick ="pause()"/>
 						<input id = "resume" type = "button" value = "Start" onclick = "resume()"/>
-				</div>
+				 </div>
 
-				<div id = "settings">
+				 <div id = "settings">
 
-					<div class = "configText">
+				  <div class = "configText">
 
 					</div>
 
 
-					<div class = "configText">
+					<div class = "configText sliders">
 
 						<h4 class = "intervalName">Work interval</h4>
-						<input class = "sliderRange intervalSet" type="range" min="1" max="60" value="25" step="1" onchange="setPom()"/>
+						<input class = "sliderRange intervalSet" type="range" min="1" max="60" value="25" step="1" onchange="setPom(); startStop()"/>
 						<span class="sliderValue">0</span>
 
 						<h4 class = "intervalName">Break interval</h4>
-						<input class = "sliderRange intervalSet" type="range" min="1" max="60" value="25" step="1" onchange="setPom()"/>
+						<input class = "sliderRange intervalSet" type="range" min="1" max="60" value="5" step="1" onchange="setPom()"/>
 						<span class="sliderValue">0</span>
 
 						<h4 class = "intervalName">Long break interval</h4>
-						<input class = "sliderRange intervalSet" type="range" min="1" max="60" value="25" step="1" onchange="setPom()"/>
+						<input class = "sliderRange intervalSet" type="range" min="1" max="60" value="30" step="1" onchange="setPom()"/>
 						<span class="sliderValue">0</span>
 					</div>
 
 					<div class = "configText">
 
-					</div>
-
-
-				<br>
+					</div><br>
 			</div>
 
-				</div>
+		  </div>
 
 			</section>
 
@@ -85,6 +78,7 @@
 			</footer>
 
 		</div> <!-- End of wrapper-->
+
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src = "scripts/jqueryCountdown.js"></script>
 	</body>

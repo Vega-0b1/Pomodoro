@@ -10,6 +10,7 @@ var timeLeftOnExit;
 var globalTime;
 var shouldBePaused;
 var show = false;
+var work,fun,longFun;
 //***************//
 
 //Countdown Code Starts*********************************************************************************************************************************************************************************************************************
@@ -73,7 +74,7 @@ function set() {
   localStorage.userPauseStateClassic = true;
   shouldBePaused = true;
 
-  var minutes = 25;
+  var minutes = work;
   minutes = parseInt(minutes);
   minutes = minutes*60000;
 
@@ -182,9 +183,10 @@ function settings() {
 function setPom(){
   var pomIntervals = document.getElementsByClassName("intervalSet");
 
-  var work = pomIntervals[0].value;
-  var fun = pomIntervals[1].value;
-  var longFun = pomIntervals[2].value;
+  work = parseInt(pomIntervals[0].value);
+  fun = parseInt(pomIntervals[1].value);
+  longFun = parseInt(pomIntervals[2].value);
+
 }
 
 //Clock Modification Code Ends *************************************************************************************
