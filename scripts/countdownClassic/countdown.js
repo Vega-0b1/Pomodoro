@@ -50,9 +50,7 @@ function updateTimer() {
   saveTime();
 
   return {
-    "days": Math.floor( time/(1000*60*60*24) ),     //checks how many days are in provide miliseconds
-    "hours": Math.floor( (time/(1000*60*60)) % 24 ),//checks hours in provided miliseconds
-    "minutes": Math.floor( (time/1000/60) % 60 ),   //checks minutes in provided milliseconds
+    "minutes": Math.floor( (time/1000/60) % 60.1 ),   //checks minutes in provided milliseconds
     "seconds": Math.floor( (time/1000) % 60 ),      //checks seconds in provided milliseconds
     "total" : time
   };
