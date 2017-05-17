@@ -7,7 +7,7 @@ function set() {
   localStorage.userPauseStateClassic = true;
   shouldBePaused = true;
 
-  var minutes = work;
+  var minutes = workValue;
   minutes = parseInt(minutes);
   minutes = minutes*60000;
 

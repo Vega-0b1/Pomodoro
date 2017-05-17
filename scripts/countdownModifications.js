@@ -4,12 +4,11 @@ function startStop() {
 
   sliderTampered = true;
   shouldBePaused = true;
-
   set();
 }
 
 function settings() {
-  if(show == true) {
+  if(show) {
     document.getElementById("settings").style.display = "inline";
     show = false;
   }
@@ -22,7 +21,15 @@ function settings() {
 function setPom() {
   var pomIntervals = document.getElementsByClassName("intervalSet");
 
-  work = parseInt(pomIntervals[0].value);
-  fun = parseInt(pomIntervals[1].value);
-  longFun = parseInt(pomIntervals[2].value);
+  workValue = parseInt(pomIntervals[0].value);
+  breakValue = parseInt(pomIntervals[1].value);
+  longBreakValue = parseInt(pomIntervals[2].value);
+
+  localStorage.userWorkValue = workValue;
+}
+
+function decideTimer() {
+
+
+
 }

@@ -43,3 +43,15 @@ function checkSavedTime(){
     }
   }
 }
+
+function checkIntervalSaves() {
+  if(localStorage.userWorkValue != null) {
+    workValue = localStorage.userWorkValue;
+    workValue = parseInt(workValue);
+    document.getElementById("test").value = workValue;
+    document.getElementById("test2").innerHTML = workValue;
+  }
+  else {
+    document.getElementById("test")= 25;
+  }
+}

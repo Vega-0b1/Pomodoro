@@ -1,7 +1,10 @@
 window.onload = function() {          //when window loads runs function without name.
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = true;
+  document.getElementById("settings").style.display = "none";
+  show = true;
   checkSavedTime();
+  checkIntervalSaves();
 };
 
 //global variables//
@@ -9,8 +12,8 @@ var timerInterval;
 var timeLeftOnExit;
 var globalTime;
 var shouldBePaused;
-var show = false;
-var work,fun,longFun;
+var show;
+var workValue,breakValue,longBreakValue;
 //***************//
 
 function startTimer(passedId, passedTime) {
@@ -18,26 +21,26 @@ function startTimer(passedId, passedTime) {
   timerInterval = setInterval(function(){      //created interval that keeps running every 1000 milisecond
 
 
-      var clock = document.getElementById(passedId);
+    var clock = document.getElementById(passedId);
 
+    var timer = updateTimer();
 
-        var timer = updateTimer();
+    clock.innerHTML = "<span>" + timer.minutes + "</span>"     //span[0]
+                    + "<span>" + timer.seconds + "</span>";    //span[1]
 
-        //if(daysOn) {
-          clock.innerHTML = "<span>" + timer.minutes + "</span>"     //span[0]
-                          + "<span>" + timer.seconds + "</span>";    //span[1]
-          var spans = clock.getElementsByTagName("span");
-          animateClock(spans[1]); //animates seconds every second
-          if(timer.seconds == 59) animateClock(spans[0]);
-            var spans = clock.getElementsByTagName("span");
+    var spans = clock.getElementsByTagName("span");
+    animateClock(spans[1]); //animates seconds every second
 
-          if(timer.total < 1){            //if statement check
-            clearInterval(timerInterval); // if true clears interval we created earlier
-            clock.innerHTML = "<span>0</span><span>0</span>"; //then sets everything to zero
-          }
+    if(timer.seconds == 59) animateClock(spans[0]);
+      var spans = clock.getElementsByTagName("span");
 
-          if(shouldBePaused == true)
-            clearInterval(timerInterval);
+    if(timer.total < 1){            //if statement check
+      clearInterval(timerInterval);
+      decideTimer();
+    }
+
+    if(shouldBePaused == true)
+      clearInterval(timerInterval);
 
   }, 1000);   //end of interval but keeps going every 1000 miliseconds
 }    //out of interval no more code to run.

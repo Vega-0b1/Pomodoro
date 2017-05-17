@@ -44,10 +44,6 @@ function startTimer(passedId, passedTime) {
           if(shouldBePaused == true)
             clearInterval(timerInterval);
 
-
-
-
-
   }, 1000);   //end of interval but keeps going every 1000 miliseconds
 }    //out of interval no more code to run.
 
