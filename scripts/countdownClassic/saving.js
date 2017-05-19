@@ -53,6 +53,8 @@ function checkIntervalSaves() {
   }
   else {
     workValue = 25;
+    workMode = false;
+    breakMode = true;
     startStop();
   }
 }
