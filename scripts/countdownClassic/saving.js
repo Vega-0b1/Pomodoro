@@ -52,6 +52,7 @@ function checkIntervalSaves() {
     document.getElementById("test2").innerHTML = workValue;
   }
   else {
-    document.getElementById("test")= 25;
+    workValue = 25;
+    startStop();
   }
 }

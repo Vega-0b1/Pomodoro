@@ -13,7 +13,9 @@ var timeLeftOnExit;
 var globalTime;
 var shouldBePaused;
 var show;
-var workValue,breakValue,longBreakValue;
+var workValue
+var breakValue
+var longBreakValue;
 //***************//
 
 function startTimer(passedId, passedTime) {
