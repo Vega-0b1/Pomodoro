@@ -38,10 +38,21 @@ header {
 header h1 {
   margin: 0;
   padding: 0;
-  font-size: 30px;
+  font-size: 40px;
   line-height: 1.2;
   color: white;
+  font-weight: 300;
+  text-transform: uppercase;
+  text-align: center;
 }
+
+
+img{
+  height: 100px;
+  width: 100px;
+  clear: both;
+}
+
 
 header.title-margin h1 {margin: 100px 0;}
 
