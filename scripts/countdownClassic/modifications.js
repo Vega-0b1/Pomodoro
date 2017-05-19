@@ -41,7 +41,7 @@ function decideTimer() {
     pomodoros = pomodoros + 1;
     console.log(pomodoros);
 
-    if(pomodoros >= 8){
+    if(pomodoros >= 6){
       breakMode = false;
       longBreakMode = true;
       pomodoros = 0;
