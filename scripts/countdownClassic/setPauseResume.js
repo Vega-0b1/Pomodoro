@@ -7,15 +7,7 @@ function set() {
   localStorage.userPauseStateClassic = true;
   shouldBePaused = true;
 
-  var minutes = workValue;
-  minutes = parseInt(minutes);
-  minutes = minutes*60000;
-
-  var seconds = 01;
-  seconds = parseInt(seconds);
-  seconds = seconds*1000;
-
-  globalTime = (minutes+seconds);
+  convertTime(workValue);
 
   startTimer("clock", globalTime);
 }
@@ -39,4 +31,16 @@ function pause() {
   document.getElementById("pause").disabled = true;
 
   localStorage.userPauseStateClassic = true;
+}
+
+function convertTime(passedTime) {
+  var minutes = passedTime;
+  minutes = parseInt(minutes);
+  minutes = minutes*60000;
+
+  var seconds = 01;
+  seconds = parseInt(seconds);
+  seconds = seconds*1000;
+
+  globalTime = (minutes+seconds);
 }

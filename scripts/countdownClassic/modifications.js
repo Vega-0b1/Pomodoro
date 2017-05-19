@@ -29,35 +29,41 @@ function setPom() {
   breakMode = true;
 }
 
-var workMode,breakMode;
+var workMode,breakMode,longBreakMode;
+var pomodoros = 0;
 
 function decideTimer() {
   if(workMode){
-    var minutes = workValue;
-    minutes = parseInt(minutes);
-    minutes = minutes*60000;
-
-    var seconds = 01;
-    seconds = parseInt(seconds);
-    seconds = seconds*1000;
-
-    globalTime = (minutes+seconds);
-
+    convertTime(workValue);
+    console.log("workMode")
     breakMode = true;
+    workMode = false;
+    pomodoros = pomodoros + 1;
+    console.log(pomodoros);
+
+    if(pomodoros >= 8){
+      breakMode = false;
+      longBreakMode = true;
+      pomodoros = 0;
+    }
     resume();
   }
   else if(breakMode){
-    var minutes = breakValue;
-    minutes = parseInt(minutes);
-    minutes = minutes*60000;
-
-    var seconds = 01;
-    seconds = parseInt(seconds);
-    seconds = seconds*1000;
-
-    globalTime = (minutes+seconds);
+    console.log("breakMode");
+    pomodoros = pomodoros + 1;
+    console.log(pomodoros);
+    convertTime(breakValue);
 
     workMode = true;
+    breakMode = false;
+    resume();
+  }
+  else if(longBreakMode){
+    console.log("longbreakMode");
+    convertTime(longBreakValue);
+
+    workMode = true;
+    longBreakMode = false;
     resume();
   }
 
