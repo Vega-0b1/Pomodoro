@@ -46,7 +46,7 @@ function decideTimer() {
       longBreakMode = true;
       pomodoros = 0;
     }
-    resume();
+    intervalDone();
   }
   else if(breakMode){
     console.log("breakMode");
@@ -56,7 +56,7 @@ function decideTimer() {
 
     workMode = true;
     breakMode = false;
-    resume();
+    intervalDone();
   }
   else if(longBreakMode){
     console.log("longbreakMode");
@@ -64,7 +64,7 @@ function decideTimer() {
 
     workMode = true;
     longBreakMode = false;
-    resume();
+    intervalDone();
   }
 
 }

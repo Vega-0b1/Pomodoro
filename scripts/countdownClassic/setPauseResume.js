@@ -44,3 +44,15 @@ function convertTime(passedTime) {
 
   globalTime = (minutes+seconds);
 }
+
+function intervalDone() {
+  clearInterval(timerInterval);
+
+  document.getElementById("resume").disabled = false;
+  document.getElementById("pause").disabled = true;
+
+  localStorage.userPauseStateClassic = true;
+  shouldBePaused = true;
+
+  startTimer("clock", globalTime);
+}
