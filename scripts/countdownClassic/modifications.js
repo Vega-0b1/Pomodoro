@@ -39,18 +39,19 @@ function decideTimer() {
     breakMode = true;
     workMode = false;
     pomodoros = pomodoros + 1;
+    updatePomodoros();
     console.log(pomodoros);
 
     if(pomodoros >= 6){
       breakMode = false;
       longBreakMode = true;
-      pomodoros = 0;
     }
     intervalDone();
   }
   else if(breakMode){
     console.log("breakMode");
     pomodoros = pomodoros + 1;
+    updatePomodoros();
     console.log(pomodoros);
     convertTime(breakValue);
 
@@ -64,7 +65,39 @@ function decideTimer() {
 
     workMode = true;
     longBreakMode = false;
+
+    pomodoros = 0;
+    updatePomodoros();
     intervalDone();
   }
 
+}
+
+function updatePomodoros(){
+  if(pomodoros == 0){
+    document.getElementById("pomodoros").innerHTML = "Pomodoros 0";
+    document.getElementById("workBreakTime").innerHTML = "Work Time";
+  }
+  if(pomodoros == 1) {
+    document.getElementById("pomodoros").innerHTML = "Pomodoros 1";
+    document.getElementById("workBreakTime").innerHTML = "Break Time";
+  }
+  if(pomodoros == 3){
+    document.getElementById("pomodoros").innerHTML = "Pomodoros 2";
+    document.getElementById("workBreakTime").innerHTML = "Break Time";
+  }
+  if(pomodoros == 5){
+    document.getElementById("pomodoros").innerHTML = "Pomodoros 3";
+    document.getElementById("workBreakTime").innerHTML = "Break Time";
+  }
+
+  if(pomodoros == 2){
+      document.getElementById("workBreakTime").innerHTML = "Work Mode";
+  }
+  if(pomodoros == 4) {
+    document.getElementById("workBreakTime").innerHTML = "Work Time";
+  }
+  if(pomodoros == 6){
+    document.getElementById("workBreakTime").innerHTML = "Long Break Time!"
+  }
 }
