@@ -2,7 +2,7 @@ window.onload = function() {          //when window loads runs function without 
   document.getElementById("resume").disabled = true;
   document.getElementById("pause").disabled = true;
   checkSavedTime();
-  checkEdits();                      //on load check for local storage for previous edits.
+  checkEdits();                  //on load check for local storage for previous edits.
 };
 
 //global variables//
@@ -38,6 +38,7 @@ function startTimer(passedId, passedTime) {
 
           if(timer.total < 1){            //if statement check
             clearInterval(timerInterval); // if true clears interval we created earlier
+            playAudio();
             clock.innerHTML = "<span>0</span><span>0</span><span>0</span><span>0</span>"; //then sets everything to zero
           }
 
@@ -211,5 +212,8 @@ function setPom(){
   var longFun = pomIntervals[2].value;
 }
 
-
+function playAudio() {
+    var notification = document.getElementById("sound");
+    notification.play();
+}
 //Save Name/Timer Code Ends******************************************************************************************************************************************************************************************************

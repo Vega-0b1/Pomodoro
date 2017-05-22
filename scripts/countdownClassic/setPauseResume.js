@@ -56,3 +56,9 @@ function intervalDone() {
 
   startTimer("clock", globalTime);
 }
+
+
+function playAudio() {
+    var notification = document.getElementById("sound");
+    notification.play();
+}

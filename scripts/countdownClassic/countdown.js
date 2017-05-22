@@ -38,6 +38,7 @@ function startTimer(passedId, passedTime) {
 
     if(timer.total < 1){            //if statement check
       clearInterval(timerInterval);
+      playAudio();
       decideTimer();
     }
 
