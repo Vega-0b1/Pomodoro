@@ -17,6 +17,8 @@ body {
 
 }
 
+
+
 a {
   color: #069;
   text-decoration: none;
@@ -71,6 +73,7 @@ header ul {
   border-radius: 7px;
   width: auto;
 }
+
 
 header ul li {
   width: 79px;
@@ -147,8 +150,18 @@ strike {
   width: 110px;
 
 }
+ol{
+  text-align: left;
+  color: #B2D2E1;
+  font-size: 20px;
+  list-style-position: inside;
+}
 
-
+hr{
+  margin: 20px;
+  border-width: 0.1px;
+  border-color: #B2D2E1;
+}
 
 .theColumns {
     -webkit-column-count: 3; /* Chrome, Safari, Opera */
