@@ -25,6 +25,8 @@ function setPom() {
   breakValue = parseInt(pomIntervals[1].value);
   longBreakValue = parseInt(pomIntervals[2].value);
   localStorage.userWorkValue = workValue;
+  localStorage.userBreakValue = breakValue;
+  localStorage.userLongBreakValue = longBreakValue;
   workMode = false;
   breakMode = true;
 }

@@ -21,6 +21,7 @@ function checkSavedTime(){
 
       shouldBePaused = true;
       timeLeft = timeLeft + 1000;
+      setPom();
       startTimer("clock",timeLeft);
     }
     else {
@@ -38,6 +39,7 @@ function checkSavedTime(){
       localStorage.userPauseStateClassic = false;
 
       var newTime = timeLeft - timeElapsed;
+      setPom();
       console.log(newTime);
       if(newTime <= 0) spanZero("clock",newTime);
       else{
@@ -53,6 +55,16 @@ function checkIntervalSaves() {
     workValue = parseInt(workValue);
     document.getElementById("test").value = workValue;
     document.getElementById("test2").innerHTML = workValue;
+
+    breakValue = localStorage.userBreakValue;
+    breakValue = parseInt(breakValue);
+    document.getElementById("test3").value = breakValue;
+    document.getElementById("test4").innerHTML = breakValue;
+
+    longBreakValue = localStorage.userLongBreakValue;
+    longBreakValue = parseInt(longBreakValue);
+    document.getElementById("tes5").value = longBreakValue;
+    document.getElementById("test6").innerHTML = longBreakValue;
   }
   else {
     workValue = 25;
@@ -68,5 +80,4 @@ function spanZero(id,time){
 
   document.getElementById("resume").disabled = false;
   document.getElementById("pause").disabled = true;
-}
 }
