@@ -164,6 +164,8 @@ strike {
     column-count: 3;
     text-align: center;
     list-style-type: none;
+    color: #B2D2E1;
+    font-size: 20px;
 }
   border-left: thin solid #B2D2E1;
   padding: 20px;
