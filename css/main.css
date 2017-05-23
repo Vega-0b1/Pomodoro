@@ -43,7 +43,7 @@ header h1 {
   color: white;
   font-weight: 200;
   text-transform: uppercase;
-  text-align: left;
+  text-align: center;
 }
 header img{
   float: left;
@@ -117,6 +117,7 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
 }
 
+
 footer {
   width: 640px;
   margin: 100px auto;
@@ -139,10 +140,12 @@ strike {
   padding: 20px;
   font-size: 20px;
   color: #B2D2E1;
+  text-align: center;
 }
 .tomatoBlock img {
   height: 110px;
   width: 110px;
+
 }
 
 
