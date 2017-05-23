@@ -116,3 +116,8 @@ span.sliderValue{
   font-size: 15pt;
   color:black;
 }
+
+h3.info {
+  margin-top:25px;
+  margin-bottom:40px;
+}

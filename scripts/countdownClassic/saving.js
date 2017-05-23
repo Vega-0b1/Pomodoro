@@ -38,8 +38,11 @@ function checkSavedTime(){
       localStorage.userPauseStateClassic = false;
 
       var newTime = timeLeft - timeElapsed;
-
+      console.log(newTime);
+      if(newTime <= 0) spanZero("clock",newTime);
+      else{
       startTimer("clock", newTime);
+      }
     }
   }
 }
@@ -57,4 +60,13 @@ function checkIntervalSaves() {
     breakMode = true;
     startStop();
   }
+}
+function spanZero(id,time){
+  clock.innerHTML = "<span>0</span><span>0</span>";
+  breakMode = true;
+  workMode = false;
+
+  document.getElementById("resume").disabled = false;
+  document.getElementById("pause").disabled = true;
+}
 }
